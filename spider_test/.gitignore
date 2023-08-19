@@ -1,6 +1,7 @@
 venv
-*/migrations
+migrations
 .idea
-*/__pycache__
+__pycache__
 *.log
 *.pyc
+*.sqlite3
