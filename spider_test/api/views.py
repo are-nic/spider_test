@@ -22,7 +22,7 @@ class OrganizationListDistrictView(generics.ListAPIView):
     """ Вывод списка Организаций по Району """
     serializer_class = OrganizationListSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['name']
+    search_fields = ['items__item__name']
 
     def get_queryset(self):
         district_id = self.kwargs['district_id']
