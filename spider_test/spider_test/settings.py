@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'rest_framework',
     'rest_framework.authtoken',
     'api',
@@ -67,8 +68,12 @@ WSGI_APPLICATION = 'spider_test.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'spider_db',
+        'USER': 'spider',
+        'PASSWORD': 'spider',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
