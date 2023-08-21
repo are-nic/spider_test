@@ -1,7 +1,8 @@
-from rest_framework import viewsets, mixins, generics, filters
+from rest_framework import viewsets, mixins, generics
 from .models import *
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated
+from .filters import CustomSearchFilter
 
 
 class OrganizationViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
@@ -21,8 +22,7 @@ class OrganizationViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, view
 class OrganizationListDistrictView(generics.ListAPIView):
     """ Вывод списка Организаций по Району """
     serializer_class = OrganizationListSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['items__item__name']
+    filter_backends = [CustomSearchFilter]
 
     def get_queryset(self):
         district_id = self.kwargs['district_id']
