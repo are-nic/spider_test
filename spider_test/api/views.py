@@ -60,3 +60,8 @@ class ItemViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Creat
         else:
             return ItemSerializer
         
+class DistrictViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """ Вывод списка Районов """
+    queryset = District.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = DistrictSerializer

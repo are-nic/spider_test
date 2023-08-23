@@ -1,6 +1,0 @@
-CREATE DATABASE spider_db;
-
-CREATE USER spider WITH ENCRYPTED PASSWORD 'spider';
-GRANT ALL PRIVILEGES ON DATABASE spider_db TO spider;
-USE spider_db;
-CREATE EXTENSION pg_trgm;

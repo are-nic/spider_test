@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hgr-z(=!iq^$j18%)#0^att))$wxrf6lmht2z@)$rk6q4xz5ib'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,12 +68,12 @@ WSGI_APPLICATION = 'spider_test.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spider_db',
-        'USER': 'spider',
-        'PASSWORD': 'spider',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': os.environ.get("DB_ENGINE", 'django.db.backends.postgresql_psycopg2'),
+        'NAME': os.environ.get("DB_NAME", 'spider_db'),
+        'USER': os.environ.get("DB_USER",'spider'),
+        'PASSWORD': os.environ.get("DB_PASSWORD",'spider'),
+        'HOST': os.environ.get("DB_HOST", 'db'),
+        'PORT': os.environ.get("DB_PORT", 5432),
     }
 }
 
@@ -120,7 +120,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST
+# DRF
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': (

@@ -5,6 +5,7 @@ from django.urls import path
 
 router = SimpleRouter(trailing_slash=False)
 router.register('organization', OrganizationViewSet, basename='organization')
+router.register('districts', DistrictViewSet, basename='districts')
 router.register('item', ItemViewSet, basename='item')
 
 urlpatterns = [
