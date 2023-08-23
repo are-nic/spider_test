@@ -32,7 +32,7 @@ Authorization: Token e1e81228b3d8d521eb8e25832197f9486def4744
 ```
 #### Получить список Районов
 GET запрос
-[localhost:8000/api/v1/districts](localhost:8000/api/v1/districts)
+[localhost:8000/api/v1/districts]()
 
 Ответ сервера
 ```sh
@@ -50,7 +50,7 @@ GET запрос
 
 #### Получить список организаций в одном из Районов по id Района
 GET запрос
-[localhost:8000/api/v1/organizations/<district_id>](localhost:8000/api/v1/districts)
+[localhost:8000/api/v1/organizations/<district_id>]()
 
 Ответ сервера
 ```sh
@@ -77,6 +77,7 @@ GET запрос
 
 #### Отфильтровать список организаций в одном из Районов по id Категории товара/услуги
 В список организаций будут включены только те, в которых присутствует данная категория Товаров/Услуг
+
 GET запрос
 [localhost:8000/api/v1/organizations/<district_id>?category_id=<category_id>]()
 
@@ -88,22 +89,27 @@ GET запрос
 [localhost:8000/api/v1/organizations/<district_id>?search=<Наименование Товара/Услуги>]()
 
 #### Получить список всех Организаций
+
 GET запрос
 [localhost:8000/api/v1/organization]()
 
 #### Получить детальную информацию об Организации по id
+
 GET запрос
-[localhost:8000/api/v1/organization/1]()
+[localhost:8000/api/v1/organization/<organization_id>]()
 
 #### Получить список Товаров/Услуг
+
 GET запрос
 [localhost:8000/api/v1/item]()
 
 #### Получить детальную информацию о Товаре/Услуге по id
+
 GET запрос
-[localhost:8000/api/v1/item/1]()
+[localhost:8000/api/v1/item/<item_id>]()
 
 #### Создать экземпляр Товара/Услуги
+
 POST запрос
 [localhost:8000/api/v1/item]()
 

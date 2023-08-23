@@ -9,12 +9,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"                                             # Прокидываем порт
+      - "8000:8000"                                             
     env_file:
       - ./.env.dev
     depends_on:
       db:
-        condition: service_healthy                              # пока не запуститься База данных не запускать сервис spider_test
+        condition: service_healthy                              
     command: sh -c "python manage.py makemigrations && \
                     python manage.py migrate && \
                     python manage.py createsuperuser --noinput && \
@@ -26,8 +26,8 @@ services:
     image: postgres:15.4
     restart: on-failure
     volumes:
-      - ./database:/docker-entrypoint-initdb.d                  # sql скрипты из папки database выполнится внутри контейнера
-      - spider-data:/var/lib/postgresql/data                    # подмонтированный локальный каталог, из которого данные будут подгружаться в контейнер
+      - ./database:/docker-entrypoint-initdb.d                  
+      - spider-data:/var/lib/postgresql/data                    
     environment:
       POSTGRES_DB: spider_db
       POSTGRES_USER: spider
@@ -36,10 +36,10 @@ services:
     expose:
       - '5432'
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U spider -d spider_db"]  # проверить соединение с сервером PostgreSQL
-      interval: 10s                                             # время в течение которого сервер ждет ответа по тестовой команде
-      timeout: 5s                                               # время задержки между проверками
-      retries: 5                                                # кол-во сбоев, после которых контейнер считается неработоспособным
+      test: ["CMD-SHELL", "pg_isready -U spider -d spider_db"]  
+      interval: 10s                                             
+      timeout: 5s                                               
+      retries: 5                                                
 
 volumes:
   spider-data:
